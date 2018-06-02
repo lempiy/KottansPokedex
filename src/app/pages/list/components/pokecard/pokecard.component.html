@@ -1,0 +1,10 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>#{{pokemon.national_id}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.national_id + '.png'" [alt]="pokemon.name">
+  <mat-card-actions class="text-center">
+    <a mat-button [routerLink]="['/detail/' + pokemon.national_id]">DETAILS</a>
+  </mat-card-actions>
+</mat-card>

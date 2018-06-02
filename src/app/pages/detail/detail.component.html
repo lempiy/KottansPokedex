@@ -1,0 +1,34 @@
+<mat-card class="detail-card" *ngIf="service.currentPokemonDetails">
+  <mat-card-header>
+    <div 
+      mat-card-avatar 
+      class="example-header-image" 
+      [ngStyle]="{'background-image': 'url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + service.currentPokemonDetails.id + '.png)'}">
+    </div>
+    <mat-card-title>{{service.currentPokemonDetails.name}}</mat-card-title>
+    <mat-card-subtitle>#{{service.currentPokemonDetails.id}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="'http://img.pokemondb.net/sprites/black-white/anim/normal/'+service.currentPokemonDetails.name+'.gif'" alt="avatar">
+  <mat-card-content>
+    <h4 class="text-center">Stats</h4>
+    <table mat-table [dataSource]="service.currentPokemonDetails.stats" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="stat.name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.stat.name }} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="base_stat">
+        <th mat-header-cell *matHeaderCellDef> Value </th>
+        <td mat-cell *matCellDef="let element"> {{element.base_stat}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayed"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayed;"></tr>
+    </table>
+  </mat-card-content>
+  <mat-card-actions class="text-center">
+    <a mat-button [routerLink]="['']">BACK</a>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,6 @@
+<main>
+  <img src="assets/title.png" class="main-title" alt="title">
+  <section *ngIf="service.pokemons.length">
+    <pok-pokecard *ngFor="let pokemon of service.pokemons" [pokemon]='pokemon'></pok-pokecard>
+  </section>
+</main>
